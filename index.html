@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flyman's Spooky Page with Flies Behind Text</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow: hidden; /* Hide overflow for the flies animation */
+        }
+        h1 {
+            font-size: 36px;
+        }
+        p {
+            font-size: 24px;
+        }
+        #flyman-img {
+            max-width: 300px;
+            border-radius: 50%;
+        }
+        #spooky-button {
+            padding: 10px 20px;
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #spooky-message {
+            display: none;
+            font-size: 28px;
+            margin-top: 20px;
+            color: #ff0000;
+            animation: spookyAnimation 1s ease-in-out;
+        }
+        /* CSS for the animated fly images */
+        .fly {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            animation: flyAnimation 5s linear infinite;
+        }
+
+        @keyframes flyAnimation {
+            0% {
+                transform: translateY(0) rotate(0);
+            }
+            50% {
+                transform: translateY(-50px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+
+        /* Keyframes animation for the spooky message */
+        @keyframes spookyAnimation {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Add six animated fly images -->
+    <img src="https://pngimg.com/uploads/fly/fly_PNG3971.png" alt="Flying Fly" class="fly" style="top: 100px; left: 50px;">
+    <img src="https://pngimg.com/uploads/fly/fly_PNG3971.png" alt="Flying Fly" class="fly" style="top: 200px; left: 200px;">
+    <img src="https://pngimg.com/uploads/fly/fly_PNG3971.png" alt="Flying Fly" class="fly" style="top: 300px; left: 350px;">
+    <img src="https://pngimg.com/uploads/fly/fly_PNG3971.png" alt="Flying Fly" class="fly" style="top: 400px; left: 100px;">
+    <img src="https://pngimg.com/uploads/fly/fly_PNG3971.png" alt="Flying Fly" class="fly" style="top: 500px; left: 250px;">
+    <img src="https://pngimg.com/uploads/fly/fly_PNG3971.png" alt="Flying Fly" class="fly" style="top: 600px; left: 400px;">
+
+    <h1>Welcome to Flyman's Spooky Page</h1>
+    <img src="flyman.jpg" alt="Flyman the Pet Fly" id="flyman-img">
+    <p>Meet Flyman, the friendly pet fly! He might be small, but he's full of charm.</p>
+    <button id="spooky-button">Click for a Spooky Surprise</button>
+    <p id="spooky-message">Boo! Did that give you a little scare?</p>
+
+    <script>
+        // JavaScript to make the button reveal the spooky message
+        const spookyButton = document.getElementById('spooky-button');
+        const spookyMessage = document.getElementById('spooky-message');
+
+        spookyButton.addEventListener('click', () => {
+            spookyMessage.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
