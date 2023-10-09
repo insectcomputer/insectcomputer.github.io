@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flyman's Spooky Page with Flies Behind Text</title>
+    <title>Flyman's Countdown Page with Flies</title>
     <style>
         body {
             background-color: #000;
@@ -22,20 +22,9 @@
             max-width: 300px;
             border-radius: 50%;
         }
-        #spooky-button {
-            padding: 10px 20px;
-            background-color: #ff0000;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        #spooky-message {
-            display: none;
-            font-size: 28px;
+        #countdown-timer {
+            font-size: 32px;
             margin-top: 20px;
-            color: #ff0000;
-            animation: spookyAnimation 1s ease-in-out;
         }
         /* CSS for the animated fly images */
         .fly {
@@ -56,22 +45,16 @@
                 transform: translateY(0) rotate(360deg);
             }
         }
-
-        /* Keyframes animation for the spooky message */
-        @keyframes spookyAnimation {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
     </style>
 </head>
 <body>
+    <h1>Welcome to Flyman's Countdown Page</h1>
+    <img src="https://www.azcentral.com/gcdn/presto/2018/11/20/PPHX/7e1b09eb-a809-4ab2-b13a-7e96d0a76255-2-conscience_pile.jpg?crop=4830,2720,x0,y351&width=3200&height=1803&format=pjpg&auto=webp" alt="Flyman the Pet Fly" id="flyman-img">
+    <p></p>
+    
+    <!-- Countdown timer -->
+    <div id="countdown-timer">THE WORDS OF FLYMAN WILL BE REVEALED  <span id="timer"></span></div>
+
     <!-- Add six animated fly images -->
     <img src="https://pngimg.com/uploads/fly/fly_PNG3971.png" alt="Flying Fly" class="fly" style="top: 100px; left: 50px;">
     <img src="https://pngimg.com/uploads/fly/fly_PNG3971.png" alt="Flying Fly" class="fly" style="top: 200px; left: 200px;">
@@ -80,20 +63,32 @@
     <img src="https://pngimg.com/uploads/fly/fly_PNG3971.png" alt="Flying Fly" class="fly" style="top: 500px; left: 250px;">
     <img src="https://pngimg.com/uploads/fly/fly_PNG3971.png" alt="Flying Fly" class="fly" style="top: 600px; left: 400px;">
 
-    <h1>Welcome to Flyman's Spooky Page</h1>
-    <img src="flyman.jpg" alt="Flyman the Pet Fly" id="flyman-img">
-    <p>Meet Flyman, the friendly pet fly! He might be small, but he's full of charm.</p>
-    <button id="spooky-button">Click for a Spooky Surprise</button>
-    <p id="spooky-message">Boo! Did that give you a little scare?</p>
-
     <script>
-        // JavaScript to make the button reveal the spooky message
-        const spookyButton = document.getElementById('spooky-button');
-        const spookyMessage = document.getElementById('spooky-message');
+        // Set the target date and time (10/20/23 at 8:00 PM MST)
+        const targetDate = new Date("2023-10-20T20:00:00-07:00");
 
-        spookyButton.addEventListener('click', () => {
-            spookyMessage.style.display = 'block';
-        });
+        // Function to update the countdown timer
+        function updateCountdown() {
+            const currentDate = new Date();
+            const timeLeft = targetDate - currentDate;
+
+            if (timeLeft <= 0) {
+                document.getElementById('timer').innerHTML = "Flyman speaks!";
+            } else {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                document.getElementById('timer').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
+        }
+
+        // Update the countdown every second
+        setInterval(updateCountdown, 1000);
+
+        // Initial update of the countdown
+        updateCountdown();
     </script>
 </body>
 </html>
